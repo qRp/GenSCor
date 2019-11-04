@@ -1,0 +1,36 @@
+2;Varank_score/;≥//;60//;AND//;0/;Augmenter;30
+1;Allèle_gnomad/;contient//;.//;AND//;0/;Augmenter;40
+1;Allèle_gnomad/;≤//;10//;AND//;0/;Augmenter;10
+1;Couverture/;≤//;10//;AND//;0/;Diminuer;100
+1;Presence_pc/;≤//;30//;AND//;0/;Diminuer;50
+1;Effet_mutation/;contient//;donor//;AND//;0/;Augmenter;30
+1;Effet_mutation/;contient//;acceptor//;AND//;0/;Augmenter;30
+2;Varank_score/;≥//;10//;AND//;0/;Augmenter;10
+1;Nbre_allele/;≥//;4//;AND//;0/;Diminuer;100
+1;role_DI/;ne contient pas//;Rouge//;AND//;0/;Augmenter;10
+1;Grantham/;>//;80//;AND//;0/;Augmenter;20
+1;Effet_mutation/;contient//;prime//;AND//;0/;Diminuer;100
+1;Allèle_gnomad/;≥//;15//;AND//;0/;Diminuer;100
+1;Effet_mutation/;contient//;intron//;AND//;0/;Diminuer;50
+1;Sift_pred/;=//;D//;AND//;0/;Augmenter;5
+1;Provean_pred/;=//;D//;AND//;0/;Augmenter;5
+1;Polyphen_HDIV_pred/;=//;D//;AND//;0/;Augmenter;5
+1;Polyphen_HVAR_pred/;=//;P//;AND//;0/;Augmenter;5
+1;LRT_pred/;=//;D//;AND//;0/;Augmenter;5
+1;Mutation_taster_pred/;=//;D//;AND//;0/;Augmenter;5
+1;FATHMM_pred/;=//;D//;AND//;0/;Augmenter;5
+1;FATHMM_MKL_pred/;=//;D//;AND//;0/;Augmenter;5
+1;Meta_SVP_pred/;=//;D//;AND//;0/;Augmenter;5
+1;Presence_pc/;<//;30//;AND//;0/;Diminuer;100
+1;Hypothese_transmission/;contient//;X-LINKED//;AND//;0/;Augmenter;20
+1;Transmission_HPO/;contient//;X-linked//;AND//;0/;Augmenter;20
+1;allèle_gnomad_male/;=//;0//;AND//;0/;Augmenter;30
+1;ID_MT/;ne contient pas//;chrX//;AND//;0/;Diminuer;100
+1;esp_all/;ne contient pas//;.//;AND//;0/;Diminuer;30
+1;1000g_all/;ne contient pas//;.//;AND//;0/;Diminuer;30
+1;CLINSIG/ID_MT/;contient/contient//;athogen/chrX//;AND/AND//;0/0/;Augmenter;50
+1;ID_MT/Nbre_allele/Nbre_homozygote/;contient/≤/=//;chrX/3/1//;AND/AND/AND//;0/0/0/;Augmenter;30
+1;Effet_mutation/;contient//;downstream//;AND//;0/;Diminuer;50
+1;Effet_mutation/;contient//;upstream//;AND//;0/;Diminuer;50
+1;ID_MT/Presence_pc/;contient/≥//;chrX/95//;AND/and//;0/0/;Augmenter;30
+1;Allèle_gnomad/;=/;0/;BASE/;0/;Augmenter;40
