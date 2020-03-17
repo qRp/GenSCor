@@ -1738,9 +1738,7 @@ def modif_option_recessif():
 	operateur_widget = tk.OptionMenu(recessif_window, OPTIONS_operateur[0], *OPTIONS_operateur, command = lambda valeur="list valeur": calculer_score("visuel"))
 	operateur_widget.grid(column=2, row=0, sticky=tk.NW)
 	#valeur
-	if rules[row]["values"][0].get() == "" :
-		rules[row]["values"][0].set(0)
-	#print(values_hash[colonne_var[row].get()])
+	
 
 	values_widget = ttk.Combobox(recessif_window, textvariable="...", validatecommand= lambda : OnValidate, validate="all")
 	values=list(sorted(values_hash[OPTIONS_colonne[0][0].get()]))
