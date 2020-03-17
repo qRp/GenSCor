@@ -75,6 +75,7 @@ L = {"L_open": {'EN':"Open",'FR':"Ouvrir"},
     "L_print_decreasing":{'EN':"sort decreasing",'FR':"Tri décroissant"},
     "L_parameters":{'EN':"Parameters",'FR':"Paramètres"},
     "L_opening_parameters":{'EN':"Opening parameters",'FR':"Paramètres d'ouverture"},
+    "L_recessive_parameters":{'EN':"Recessive module Options",'FR':"Options module récéssif"},
     "Contains":{'EN':"Contains",'FR':"contient"},
     "Don't contains":{'EN':"Don't contains",'FR':"ne contient pas"},
     "Increase":{'EN':"Increase",'FR':"Augmenter"},
@@ -1706,6 +1707,50 @@ def modif_parameters():
 	#le bouton de validation
 	afficher_data_thread(1)
 
+
+def modif_option_recessif():
+	global separateur
+	global firstline
+	print(datetime.datetime.now(), "modif recessif")
+
+	recessif_window=tk.Toplevel(root_window)
+	recessif_window.attributes('-topmost', 'true')
+	recessif_window.geometry('400x400')
+	recessif_window.title(L["L_recessive_parameters"][lang])
+	for widget in recessif_window.grid_slaves():
+		widget.destroy()
+	si_label = tk.Label(recessif_window, text=L["L_if"][lang], bg="#dfdfdf")
+	si_label.grid(column=0, row=0, sticky=tk.NW)
+	#colonne
+	OPTIONS_colonne=[]
+	first=firstline.split(separateur)
+	for i in range(len(first)):
+		colonne_hash[first[i]]=i
+		OPTIONS_colonne.append(first[i])
+	#else:
+	#	colonne_var[row].set(colonne)
+	colonne_widget = tk.OptionMenu(recessif_window, OPTIONS_colonne[0], *OPTIONS_colonne, command = lambda valeur="list valeur": colonne_wrapper(row))
+	colonne_widget.grid(column=1,row=0, sticky=tk.NW)
+	#operateur
+	OPTIONS_operateur = ["=","≠",">","<","≤","≥",L["Contains"][lang],L["Don't contains"][lang]]
+	#else :
+	#	operateur_var[row].set(operateur)
+	operateur_widget = tk.OptionMenu(recessif_window, OPTIONS_operateur[0], *OPTIONS_operateur, command = lambda valeur="list valeur": calculer_score("visuel"))
+	operateur_widget.grid(column=2, row=0, sticky=tk.NW)
+	#valeur
+	if rules[row]["values"][0].get() == "" :
+		rules[row]["values"][0].set(0)
+	#print(values_hash[colonne_var[row].get()])
+
+	values_widget = ttk.Combobox(recessif_window, textvariable="...", validatecommand= lambda : OnValidate, validate="all")
+	values=list(sorted(values_hash[OPTIONS_colonne[0][0].get()]))
+	values_widget.config(values=values)
+	#values_widget.configure(font=font, bg=color)
+	values_widget.grid(column=3,row=0, pady=2)
+	#alors
+	bouton_supprimer = tk.Button(frame_t, text=L["L_remove"][lang], command= lambda : supprimer_ligne(row))
+	bouton_supprimer.grid(column=10, row=row, sticky=tk.NW)
+
 #######################
 #CORE
 
@@ -1800,6 +1845,7 @@ menubar.add_cascade(label=L["L_edit"][lang], menu=editmenu)
 
 parammenu=tk.Menu(menubar, tearoff=0)
 parammenu.add_command(label=L["L_opening_parameters"][lang], command=lambda : modif_parameters())
+parammenu.add_command(label=L["L_recessive_parameters"][lang], command=lambda : modif_option_recessif())
 menubar.add_cascade(label=L["L_parameters"][lang], menu=parammenu)
 if mode_fenetre == "True":
 	top.config(menu=menubar)
